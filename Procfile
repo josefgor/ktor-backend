@@ -1,0 +1,1 @@
+web: java -Dserver.port=$PORT -jar build/libs/todo2-0.0.1-all.jar
