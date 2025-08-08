@@ -3,26 +3,32 @@ FROM gradle:8.4.0-jdk17 AS builder
 
 WORKDIR /app
 
-# Copy gradle files separately to leverage Docker cache
-COPY gradle gradle
-COPY gradlew .
-COPY gradle.properties .
-#COPY build.gradle ./
-COPY build.gradle.kts settings.gradle.kts ./
-
-# Make gradlew executable
-#RUN ls -l ./gradlew  # optional, helps debug permissions
-#RUN chmod +x gradlew
-RUN chmod +x ./gradlew
-
-# Pre-download dependencies (speeds up builds)
-RUN ./gradlew dependencies
-
 # Copy the rest of the source code
 COPY . .
 
 # Make gradlew executable
 RUN chmod +x ./gradlew
+
+# Copy gradle files separately to leverage Docker cache
+#COPY gradle gradle
+#COPY gradlew .
+#COPY gradle.properties .
+#COPY build.gradle ./
+#COPY build.gradle.kts settings.gradle.kts ./
+
+# Make gradlew executable
+#RUN ls -l ./gradlew  # optional, helps debug permissions
+#RUN chmod +x gradlew
+#RUN chmod +x ./gradlew
+
+# Pre-download dependencies (speeds up builds)
+RUN ./gradlew dependencies
+
+# Copy the rest of the source code
+#COPY . .
+
+# Make gradlew executable
+#RUN chmod +x ./gradlew
 
 # Build the fat jar
 RUN ./gradlew shadowJar
