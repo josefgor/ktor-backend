@@ -21,6 +21,9 @@ RUN ./gradlew dependencies
 # Copy the rest of the source code
 COPY . .
 
+# Make gradlew executable
+RUN chmod +x ./gradlew
+
 # Build the fat jar
 RUN ./gradlew shadowJar
 
