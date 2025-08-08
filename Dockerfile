@@ -10,14 +10,15 @@ COPY gradle.properties .
 #COPY build.gradle ./
 COPY build.gradle.kts settings.gradle.kts ./
 
-# Make gradlew executable
-RUN chmod +x gradlew
-
 # Pre-download dependencies (speeds up builds)
 RUN ./gradlew dependencies
 
 # Copy the rest of the source code
 COPY . .
+
+# Make gradlew executable
+#RUN chmod +x gradlew
+RUN chmod +x ./gradlew
 
 # Build the fat jar
 RUN ./gradlew shadowJar
