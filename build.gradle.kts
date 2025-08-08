@@ -12,10 +12,15 @@ plugins {
 group = "com.todo2"
 version = "0.0.1"
 
+//application {
+//    mainClass = "io.ktor.server.netty.EngineMain"
+//    mainClass.set("com.todo2.ApplicationKt") // Replace with your actual main class
+//}
 application {
-    mainClass = "io.ktor.server.netty.EngineMain"
-    mainClass.set("com.todo2.ApplicationKt") // Replace with your actual main class
+    mainClass.set("io.ktor.server.netty.EngineMain")
 }
+
+
 repositories {
     mavenCentral()
 }
