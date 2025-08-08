@@ -6,7 +6,8 @@ WORKDIR /app
 # Copy gradle files separately to leverage Docker cache
 COPY gradle gradle
 COPY gradlew .
-COPY build.gradle settings.gradle ./
+COPY build.gradle ./
+COPY build.gradle.kts settings.gradle.kts ./
 
 # Make gradlew executable
 RUN chmod +x gradlew
