@@ -17,6 +17,7 @@ RUN ./gradlew dependencies
 COPY . .
 
 # Make gradlew executable
+RUN ls -l ./gradlew  # optional, helps debug permissions
 #RUN chmod +x gradlew
 RUN chmod +x ./gradlew
 
