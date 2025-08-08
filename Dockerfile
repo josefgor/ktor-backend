@@ -38,4 +38,5 @@ COPY --from=builder /app/build/libs/*-all.jar app.jar
 EXPOSE 8080
 
 # Start the application
-CMD ["java", "-jar", "app.jar"]
+#CMD ["java", "-jar", "app.jar"]
+CMD ["java", "-Dktor.deployment.configuration=application.yaml", "-jar", "app.jar"]
